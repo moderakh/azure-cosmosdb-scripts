@@ -1,5 +1,6 @@
 #!/bin/bash
 # author: Mohammad Derakhshani <moderakh>
+# version: 0.9
 # NOTE: this will delete all the databases and containers in your cosmos db account
 # if you don't provide any option it will target Cosmos Emualtor running on Parallels on Mac accessable on 10.37.129.3:8081
 # usage when running against emulator:
