@@ -1,27 +1,25 @@
 #!/bin/bash
-# Mohammad Derakhshani
-# requirement: azure cli  https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest
-
+# author: Mohammad Derakhshani <moderakh>
+# NOTE: this will delete all the databases and containers in your cosmos db account
+# if you don't provide any option it will target Cosmos Emualtor running on Parallels on Mac accessable on 10.37.129.3:8081
+# usage when running against emulator:
+#   bash az_delete_cosmosdb_databases.sh
+# usage when running against prod acocunt
+#   bash YOUR_COSMODB_ACCOUNT_NAME
 set -e
 
 if [ -z "$1" ]; then
   export CURL_CA_BUNDLE=""
   opts="--url-connection https://10.37.129.3:8081 --key C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw=="
 else
-  resource_group=moderakh-java-sdk
-  subscription="CosmosDB-SDK-Dev"
+  resource_group=REPLACE_WITH_YOUR_DEFAULT_RESOURCE_GROUP
+  subscription=REPLACE_WITH_YOUR_DEFAULT_SUB
   accountName="$1"
 
   public_ip=`curl ifconfig.me` > /dev/null
-  opts="-a $accountName -g $resource_group"
+  opts="-n $accountName -g $resource_group"
   az account set --subscription "$subscription"
 fi
-
-
-#az network nsg rule update  -g cleanupservice --nsg-name rg-cleanupservice-nsg -n Cleanuptool-Allow-100 --add sourceAddressPrefixes $public_ip
-#az network nsg rule update --subscription "$subscription" -g cleanupservice --nsg-name rg-cleanupservice-nsg2 -n Cleanuptool-Allow-100 --add sourceAddressPrefixes $public_ip
-#az network nsg rule update --subscription "Cosmos DB eFun Prototype" -g cleanupservice --nsg-name rg-cleanupservice-nsg3 -n Cleanuptool-Allow-100 --add sourceAddressPrefixes $public_ip
-#az network nsg rule update --subscription "Cosmos DB eFun Prototype" -g cleanupservice --nsg-name rg-cleanupservice-nsg4 -n Cleanuptool-Allow-100 --add sourceAddressPrefixes $public_ip
 
 
 db_cnt=`az cosmosdb database list $opts -o table 2>/dev/null | tail -n +3 | wc -l | sed -e 's/^[[:space:]]*//'`
