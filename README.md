@@ -1,4 +1,4 @@
-# azure-cosmosdb-scripts
+# azure-cosmosdb-scripts-dev
 This repo contains helpful scripts which are useful when developing against Azure Cosmos DB Service.
 
 # Delete all databases in dev cosmos db account or emulator:
