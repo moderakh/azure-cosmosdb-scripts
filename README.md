@@ -30,5 +30,5 @@ az login
 to delete all the databases within your azure cosmosdb account, run the following command:
 
 ```bash
-bash az_delete_cosmosdb_databases.sh -g YOUR_RESOURCE_GROUP -n YOUR_COSMOSDB_ACCOUNT_NAME -s YOUR_SUB_NAME
+bash az_delete_cosmosdb_databases.sh -s YOUR_SUB_NAME -g YOUR_RESOURCE_GROUP -n YOUR_COSMOSDB_ACCOUNT_NAME 
 ```
