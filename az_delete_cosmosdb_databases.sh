@@ -6,22 +6,45 @@
 # usage when running against emulator:
 #   bash az_delete_cosmosdb_databases.sh
 # usage when running against prod acocunt
-#   bash YOUR_COSMODB_ACCOUNT_NAME
+#   bash az_delete_cosmosdb_databases.sh -g YOUR_RESOURCE_GROUP -n YOUR_COSMOSDB_ACCOUNT_NAME -s YOUR_SUB_NAME
 set -e
 
 if [ -z "$1" ]; then
   export CURL_CA_BUNDLE=""
   opts="--url-connection https://10.37.129.3:8081 --key C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw=="
 else
-  resource_group=REPLACE_WITH_YOUR_DEFAULT_RESOURCE_GROUP
-  subscription=REPLACE_WITH_YOUR_DEFAULT_SUB
-  accountName="$1"
+
+  while (( "$#" )); do
+    case "$1" in
+      -g|--resourceGroup)
+        resource_group="$2"
+        shift 2
+        ;;
+      -n|--accountName)
+        accountName="$2"
+        shift 2
+        ;;
+      -s|--subscription)
+        subscription="$2"
+        shift 2
+        ;;
+      -*|--*=) # unsupported flags
+        echo "Error: Unsupported flag $1" >&2
+        exit 1
+        ;;
+      *) # preserve positional arguments
+        PARAMS="$PARAMS $1"
+        shift
+        ;;
+    esac
+  done
 
   public_ip=`curl ifconfig.me` > /dev/null
   opts="-n $accountName -g $resource_group"
-  az account set --subscription "$subscription"
+  if [ -n "$subscription" ]; then
+    az account set --subscription "$subscription"
+  fi
 fi
-
 
 db_cnt=`az cosmosdb database list $opts -o table 2>/dev/null | tail -n +3 | wc -l | sed -e 's/^[[:space:]]*//'`
 
@@ -34,7 +57,6 @@ fi
 
  
 echo "Deleting $db_cnt databases..."
-#az cosmosdb database list $opts -o table 2>/dev/null | tail -n +3 | cut -d' ' -f1 
 az cosmosdb database list $opts -o table 2>/dev/null | tail -n +3 | cut -d' ' -f1 | xargs -I '{}' az cosmosdb database delete $opts -d '{}' --yes 2>/dev/null 
 
 if [ $? -ne 0 ]
