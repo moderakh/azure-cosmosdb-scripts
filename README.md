@@ -22,4 +22,13 @@ This assumes emulator is accessable on "https://10.37.129.3:8081". 10.37.129.3 i
 
 ### Delete databases in Azure Cosmos DB cloud:
 
+make sure you have logged in with azure-cli, otherwise run the following command:
+```bash
+az login
+```
 
+to delete all the databases within your azure cosmosdb account, run the following command:
+
+```bash
+bash az_delete_cosmosdb_databases.sh -g YOUR_RESOURCE_GROUP -n YOUR_COSMOSDB_ACCOUNT_NAME -s YOUR_SUB_NAME
+```
