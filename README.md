@@ -9,6 +9,7 @@ This repo contains helpful scripts which are useful when developing against Azur
 1. bash
 2. azure-cli (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
+Note: I use this on MacOS. It should work on non-MacOS environment too, but I have only used and tested this on MacOS.
 
 ## How to Run:
 
