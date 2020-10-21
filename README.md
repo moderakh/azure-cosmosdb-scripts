@@ -16,10 +16,10 @@ Note: I use this on MacOS. It should work on non-MacOS environment too, but I ha
 ### Delete databases on emulator:
 
 ```bash
-bash ~/bin/az_delete_cosmosdb_databases.sh
+bash ~/bin/az_delete_cosmosdb_databases.sh -e https://10.37.129.3:8081
 ```
 
-This assumes emulator is accessable on "https://10.37.129.3:8081". 10.37.129.3 is the default IP when emulator runs inside Parallels VM on MacOS. If you have emulator accessible on a different IP, replace the IP in the script.
+This assumes emulator is accessable on "https://10.37.129.3:8081". If you have emulator reachable on different IP pass that here.
 
 ### Delete databases in Azure Cosmos DB cloud:
 
