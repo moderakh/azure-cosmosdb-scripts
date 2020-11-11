@@ -13,10 +13,16 @@ Note: I use this on MacOS. It should work on non-MacOS environment too, but I ha
 
 ## How to Run:
 
+close the repo
+```bash
+git clone https://github.com/moderakh/azure-cosmosdb-scripts-dev.git
+cd azure-cosmosdb-scripts-dev
+```
+
 ### Delete databases on emulator:
 
 ```bash
-bash ~/bin/az_delete_cosmosdb_databases.sh -e https://10.37.129.3:8081
+bash az_delete_cosmosdb_databases.sh -e https://10.37.129.3:8081
 ```
 
 This assumes emulator is accessable on "https://10.37.129.3:8081". If you have emulator reachable on different IP pass that here.
