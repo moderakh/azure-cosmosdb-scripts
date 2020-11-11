@@ -21,7 +21,7 @@ cd azure-cosmosdb-scripts-dev
 
 ### Delete databases on emulator:
 
-You need to invoke the script with "bash" as following (don't use oh-my-zsh directly):
+If you are a oh-my-zsh user, you need to invoke the script with "bash" as following (don't use oh-my-zsh directly):
 
 ```bash
 bash az_delete_cosmosdb_databases.sh -e https://10.37.129.3:8081
