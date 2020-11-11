@@ -13,13 +13,15 @@ Note: I use this on MacOS. It should work on non-MacOS environment too, but I ha
 
 ## How to Run:
 
-close the repo
+clone the repo
 ```bash
 git clone https://github.com/moderakh/azure-cosmosdb-scripts-dev.git
 cd azure-cosmosdb-scripts-dev
 ```
 
 ### Delete databases on emulator:
+
+You need to invoke the script with "bash" as following (don't use oh-my-zsh directly):
 
 ```bash
 bash az_delete_cosmosdb_databases.sh -e https://10.37.129.3:8081
