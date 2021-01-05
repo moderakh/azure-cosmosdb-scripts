@@ -1,9 +1,6 @@
 # Azure Cosmos DB Scripts for Dev
 This repo contains helpful scripts which are useful when developing against Azure Cosmos DB Service.
 
-# Delete all databases in dev cosmos db account or emulator:
-
-`az_delete_cosmosdb_databases.sh` can be used to delete all databases in an Azure Cosmos DB account or Cosmos DB emaultor.
 
 ## Requirements:
 1. bash
@@ -18,6 +15,11 @@ clone the repo
 git clone https://github.com/moderakh/azure-cosmosdb-scripts-dev.git
 cd azure-cosmosdb-scripts-dev
 ```
+
+# Delete all databases in dev cosmos db account or emulator:
+
+`az_delete_cosmosdb_databases.sh` can be used to delete all databases in an Azure Cosmos DB account or Cosmos DB emaultor.
+
 
 ### Delete databases on emulator:
 
