@@ -1,6 +1,6 @@
 #!/bin/bash
 # author: Mohammad Derakhshani <moderakh>
-# version: 0.9.1
+# version: 0.9.2
 # NOTE: this will delete all the databases and containers in your cosmos db account
 # if you don't provide any option it will target Cosmos Emualtor running on Parallels on Mac accessable on 10.37.129.3:8081
 # usage when running against emulator reachable on https://10.37.129.3:8081:
@@ -49,7 +49,7 @@ fi
 
 if [ -n "$emulatorHost" ]; then 
   export CURL_CA_BUNDLE=""
-  opts="--url-connection $EMULATOR_HOST --key C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw=="
+  opts="--url-connection $emulatorHost --key C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw=="
 else 
   #public_ip=`curl ifconfig.me` > /dev/null
   opts="-n $accountName -g $resource_group"
@@ -58,6 +58,7 @@ else
   fi
 fi
 
+echo "running: az cosmosdb database list $opts -o table 2>/dev/null"
 db_cnt=`az cosmosdb database list $opts -o table 2>/dev/null | tail -n +3 | wc -l | sed -e 's/^[[:space:]]*//'`
 
 echo "Found $db_cnt databases."
