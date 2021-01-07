@@ -14,17 +14,17 @@ git clone https://github.com/moderakh/azure-cosmosdb-scripts-dev.git
 cd azure-cosmosdb-scripts-dev
 ```
 
-# Import Emulator Self Sign cert in MacOS or Linux
+# (import-emulator-cert-to-java-trust-store.sh) Import Emulator Self Sign cert in MacOS or Linux
 
 Start the emulator 
 
 run 
 ```bash
-bash cosmos-emulator-dump.sh --host YOUR_EMULATOR_HOST --port YOUR_EMULATOR_PORT
+bash import-emulator-cert-to-java-trust-store.sh --host YOUR_EMULATOR_HOST --port YOUR_EMULATOR_PORT
 ```
 
 
-# Delete all databases in dev cosmos db account or emulator:
+# (az_delete_cosmosdb_databases.sh) Delete all databases in dev cosmos db account or emulator:
 
 `az_delete_cosmosdb_databases.sh` can be used to delete all databases in an Azure Cosmos DB account or Cosmos DB emaultor.
 
