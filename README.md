@@ -8,13 +8,21 @@ This repo contains helpful scripts which are useful when developing against Azur
 
 Note: I use this on MacOS. It should work on non-MacOS environment too, but I have only used and tested this on MacOS.
 
-## How to Run:
-
 clone the repo
 ```bash
 git clone https://github.com/moderakh/azure-cosmosdb-scripts-dev.git
 cd azure-cosmosdb-scripts-dev
 ```
+
+# Import Emulator Self Sign cert in MacOS or Linux
+
+Start the emulator 
+
+run 
+```bash
+bash cosmos-emulator-dump.sh --host YOUR_EMULATOR_HOST --port YOUR_EMULATOR_PORT
+```
+
 
 # Delete all databases in dev cosmos db account or emulator:
 
