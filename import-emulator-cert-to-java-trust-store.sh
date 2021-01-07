@@ -1,4 +1,10 @@
 #!/bin/bash
+# author: Mohammad Derakhshani <moderakh>
+# version: 0.9.0
+# NOTE: this will import Cosmos DB emulator self signed cert to Java trust store
+# if you don't provide any option it will target Cosmos Emualtor running on Parallels on Mac accessable on localhost:8081
+# usage
+#   bash import-emulator-cert-to-java-trust-store.sh --host localhost --port 8081
 
 set -e
 
