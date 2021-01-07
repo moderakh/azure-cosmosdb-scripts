@@ -18,9 +18,9 @@ cd azure-cosmosdb-scripts-dev
 
 Start the emulator 
 
-run 
+run command targetting emulator cooridanates to import cert
 ```bash
-bash import-emulator-cert-to-java-trust-store.sh --host YOUR_EMULATOR_HOST --port YOUR_EMULATOR_PORT
+bash import-emulator-cert-to-java-trust-store.sh --host localhost --port 8081
 ```
 
 
